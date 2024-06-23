@@ -30,6 +30,7 @@ public class PlayerSelector : NetworkBehaviour
         isHostTurn = !isHostTurn;
         
         Initialize();
+        
     }
 
     public override void OnDestroy()
