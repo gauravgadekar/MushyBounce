@@ -10,6 +10,19 @@ public class PlayerStateManager : MonoBehaviour
 
     [SerializeField] private Collider2D collider;
 
+    
+    public void Enable()
+    {
+
+        EnableClientRpc();
+        
+    }
+    public void Disable()
+    {
+        
+        DisableClientRpc();
+        
+    }
 
     [ClientRpc]
     private void EnableClientRpc()
@@ -20,8 +33,10 @@ public class PlayerStateManager : MonoBehaviour
             Color color = renderer.color;
             color.a = 1f;
             renderer.color = color;
+            Debug.Log("enabled");
         }
     }
+    
     
     [ClientRpc]
     private void DisableClientRpc()
@@ -32,24 +47,11 @@ public class PlayerStateManager : MonoBehaviour
             Color color = renderer.color;
             color.a = 0.2f;
             renderer.color = color;
+            Debug.Log("disabled");
         }
     }
-    
-    public void Enable()
-    {
 
-        EnableClientRpc();
-        
-    }
-    
-    public void Disable()
-    {
-        
-        DisableClientRpc();
-        
-    }
-    
-    
+
 
 
 

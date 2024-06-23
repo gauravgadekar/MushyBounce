@@ -24,15 +24,7 @@ public class PlayerSelector : NetworkBehaviour
         GameManager.onGameStateChanged += GameStateChangedCallback;
         Egg.onHit += SwitchPlayers;
     }
-
-    private void SwitchPlayers()
-    {
-        isHostTurn = !isHostTurn;
-        
-        Initialize();
-        
-    }
-
+    
     public override void OnDestroy()
     {
         base.OnDestroy();
@@ -64,28 +56,36 @@ public class PlayerSelector : NetworkBehaviour
                     //if it's the host turn, enable host and disable client
 
                     if (isHostTurn)
-                    {
+                    
                         playerStateManagers[i].Enable();
-                    }
+                    
                     else
-                    {
+                    
                         playerStateManagers[i].Disable();
-                    }
+                    
                 
             }
 
             else
             {
                 if (isHostTurn)
-                {
+                
                     playerStateManagers[i].Disable();
-                }
+                
                 else
-                {
+                
                     playerStateManagers[i].Enable();
-                }
+                
             }
         }
+        
+    }
+    
+    private void SwitchPlayers()
+    {
+        isHostTurn = !isHostTurn;
+        
+        Initialize();
         
     }
 }
