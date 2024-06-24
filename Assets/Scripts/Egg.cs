@@ -11,8 +11,10 @@ public class Egg : MonoBehaviour
     [SerializeField]
     private float bounceVelocity;
     private Rigidbody2D rig;
+    private bool isAlive = true;
 
     [Header("Events")] public static Action onHit;
+    public static Action onFellInWater;
 
     private void Start()
     {
@@ -21,10 +23,27 @@ public class Egg : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!isAlive)
+        {
+            return;
+        }
         if (collision.collider.TryGetComponent(out PlayerController playerController))
         {
             Bounce(collision.GetContact(0).normal);
             onHit?.Invoke();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (!isAlive)
+        {
+            return;
+        }
+        if (collider.CompareTag("water"))
+        {
+            onFellInWater?.Invoke();
+            isAlive = false;
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerStateManager : MonoBehaviour
+public class PlayerStateManager : NetworkBehaviour
 {
 
     [Header("Elements")] [SerializeField] private SpriteRenderer[] renderers;
@@ -25,7 +25,7 @@ public class PlayerStateManager : MonoBehaviour
     }
 
     [ClientRpc]
-    private void EnableClientRpc()
+    private void EnableClientRpc()  
     {
         collider.enabled = true;
         foreach (SpriteRenderer renderer in renderers)

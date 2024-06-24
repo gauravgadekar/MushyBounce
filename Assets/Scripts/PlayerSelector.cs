@@ -28,6 +28,7 @@ public class PlayerSelector : NetworkBehaviour
     public override void OnDestroy()
     {
         base.OnDestroy();
+        
         NetworkManager.OnServerStarted -= NetworkManager_OnServerStarted;
         GameManager.onGameStateChanged -= GameStateChangedCallback;
         Egg.onHit -= SwitchPlayers;
