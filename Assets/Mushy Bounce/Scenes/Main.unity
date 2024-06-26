@@ -680,7 +680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#0055ff>1</color>-<color=#E52020>1</color>
+  m_text: <color=#0055ff>0</color>-<color=#E52020>0</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1fc236e1c09aa714d8ec434b69989925, type: 2}
   m_sharedMaterial: {fileID: -6085794596386787685, guid: 1fc236e1c09aa714d8ec434b69989925, type: 2}
@@ -1565,6 +1565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1206408121}
   - component: {fileID: 1206408122}
+  - component: {fileID: 1206408123}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -1599,6 +1600,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e03d0616e3d164c841ffd302f9f0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 348151351}
+--- !u!114 &1206408123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206408120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1125906852
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1354569658
 GameObject:
   m_ObjectHideFlags: 0

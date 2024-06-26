@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -5,6 +6,18 @@ using UnityEngine;
 
 public class PlayerSelector : NetworkBehaviour
 {
+
+    public static PlayerSelector instance;
+
+    private void Awake()
+    {
+        if (instance==null)
+        {
+            instance = this;
+        }
+        else
+            Destroy(gameObject);
+    }
 
     private bool isHostTurn;
     public override void OnNetworkSpawn()
@@ -88,5 +101,10 @@ public class PlayerSelector : NetworkBehaviour
         
         Initialize();
         
+    }
+
+    public bool isHostturn()
+    {
+        return isHostTurn;
     }
 }

@@ -12,6 +12,7 @@ public class Egg : MonoBehaviour
     private float bounceVelocity;
     private Rigidbody2D rig;
     private bool isAlive = true;
+    private float gravityScale;
 
     [Header("Events")] public static Action onHit;
     public static Action onFellInWater;
@@ -19,6 +20,18 @@ public class Egg : MonoBehaviour
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        isAlive = true;
+
+        gravityScale = rig.gravityScale;
+        rig.gravityScale = 0;
+
+        StartCoroutine("WaitAndFall");
+    }
+
+    IEnumerator WaitAndFall()
+    {
+        yield return new WaitForSeconds(2);
+        rig.gravityScale = gravityScale;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
