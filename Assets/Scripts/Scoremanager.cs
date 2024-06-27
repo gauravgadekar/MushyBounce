@@ -75,6 +75,29 @@ public class Scoremanager : NetworkBehaviour
         
         UpdateScoreClientRpc(hostScore,clientScore);
         UpdateScoreText();
+
+        CheckForEndGame();
+    }
+
+    private void CheckForEndGame()
+    {
+        if (hostScore>=3)
+        {
+            
+        }
+        else if (clientScore>=3)
+        {
+            
+        }
+        else
+        {
+            ReuseEgg();
+        }
+    }
+
+    private void ReuseEgg()
+    {
+        EggManager.instance.ReuseEgg();
     }
 
     private void UpdateScoreText()

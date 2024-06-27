@@ -55,8 +55,9 @@ public class Egg : MonoBehaviour
         }
         if (collider.CompareTag("water"))
         {
-            onFellInWater?.Invoke();
             isAlive = false;
+            onFellInWater?.Invoke();
+            
         }
     }
 
@@ -65,5 +66,19 @@ public class Egg : MonoBehaviour
     {
 
         rig.velocity = normal * bounceVelocity;
+    }
+
+    public void Reuse()
+    {
+       transform.position = Vector2.up * 5;
+       transform.rotation = new Quaternion(0, 0, 0,0);
+       rig.velocity = Vector2.zero;
+       rig.angularVelocity = 0;
+       rig.gravityScale = 0;
+
+       isAlive = true;
+       
+       StartCoroutine("WaitAndFall");
+
     }
 }
