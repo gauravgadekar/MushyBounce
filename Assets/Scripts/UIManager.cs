@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Net;
+using System.Linq;
+using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
 
 public class UIManager : MonoBehaviour
 {
@@ -88,6 +92,13 @@ public class UIManager : MonoBehaviour
     
     public void ClientButtonCallback()
     {
+        //grab ip address of player
+        string ipAddress = IPManager.instance.GetInputIp();
+        
+        //congif the network manager
+        UnityTransport utp = NetworkManager.Singleton.GetComponent<UnityTransport>();
+        utp.SetConnectionData(ipAddress, 7777);
+        
         NetworkManager.Singleton.StartClient();
         ShowWaitingpanel();
     }

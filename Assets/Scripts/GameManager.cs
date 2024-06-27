@@ -80,5 +80,11 @@ public class GameManager : NetworkBehaviour
         onGameStateChanged?.Invoke(gameState);
     }
 
+    public void SetGameState(State gameState)
+    {
+        this.gameState = gameState;
+        onGameStateChanged?.Invoke(gameState);
+    }
+
 
 }
