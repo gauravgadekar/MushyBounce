@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Net;
 using System.Linq;
+using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 
@@ -17,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gamepanel;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
+    [SerializeField] private TMP_InputField joinCodeInputField;
 
     private void Start()
     {
@@ -86,20 +88,24 @@ public class UIManager : MonoBehaviour
 
     public void HostButtonCallback()
     {
-        NetworkManager.Singleton.StartHost();
+        //NetworkManager.Singleton.StartHost();
+        RelayManager.instance.StartHostWithRelay();
         ShowWaitingpanel();
     }   
     
     public void ClientButtonCallback()
     {
         //grab ip address of player
-        string ipAddress = IPManager.instance.GetInputIp();
+       // string ipAddress = IPManager.instance.GetInputIp();
+       
         
         //congif the network manager
-        UnityTransport utp = NetworkManager.Singleton.GetComponent<UnityTransport>();
-        utp.SetConnectionData(ipAddress, 7777);
+       // UnityTransport utp = NetworkManager.Singleton.GetComponent<UnityTransport>();
+       // utp.SetConnectionData(ipAddress, 7777);
+       
+       RelayManager.instance.StartClientWithRelay(joinCodeInputField.text);
         
-        NetworkManager.Singleton.StartClient();
+      //  NetworkManager.Singleton.StartClient();
         ShowWaitingpanel();
     }
 

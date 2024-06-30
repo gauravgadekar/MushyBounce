@@ -11,7 +11,8 @@ using Unity.Netcode.Transports.UTP;
 
 public class IPManager : MonoBehaviour
 {
-    [Header("Elements")] [SerializeField] private TextMeshProUGUI ipText;
+    [Header("Elements")] 
+    [SerializeField] private TextMeshProUGUI ipText;
     [SerializeField] private TMP_InputField ipInputField;
     public static IPManager instance;
     
